@@ -1,0 +1,10 @@
+#pragma once
+
+enum SceneType
+{
+	MENU_SCENE,
+	INTRODUCE_SCENE,
+	SELECT_SCENE,
+	SETTING_SCENE,
+	GAME_SCENE,
+};
