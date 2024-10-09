@@ -14,17 +14,11 @@ class SceneManager
 
 public:
 
-	static SceneManager* get_instance()
-	{
-		static SceneManager* instance = new SceneManager();
-		return instance;
-	}
+	static SceneManager* get_instance();
 
 private:
 
-	SceneManager() 
-	{
-	}
+	SceneManager();
 
 public:
 
@@ -39,48 +33,13 @@ public:
 	// }
 
 	// 用枚举降低耦合度，不用将头文件到处include
-	void switch_to(SceneType type)
-	{
-		if (current_scene)
-			current_scene->on_exit();
+	void switch_to(SceneType type);
 
-		switch (type)
-		{
-		case MENU_SCENE:
-			current_scene = menu_scene;
-			break;
-		case INTRODUCE_SCENE:
-			current_scene = introduce_scene;
-			break;
-		case SELECT_SCENE:
-			current_scene = select_scene;
-			break;
-		case SETTING_SCENE:
-			current_scene = setting_scene;
-			break;
-		case GAME_SCENE:
-			current_scene = game_scene;
-			break;
-		}
+	void on_input(key_msg& msg);
 
-		current_scene->on_enter();
-	}
+	void on_update(int delta);
 
-	void on_input(key_msg& msg)
-	{
-		current_scene->on_input(msg);
-	}
-
-	void on_update(int delta)
-	{
-		current_scene->on_update(delta);
-	}
-
-	void on_draw()
-	{
-		current_scene->on_draw();
-	}
-
+	void on_draw();
 
 private:
 
